@@ -1,0 +1,164 @@
+1
+musician{id ,name st,city}
+musician_ins(mus_id,ins_name)
+music_song(title,mus_id)
+instrument(name, key)
+song(title,author,album_id)
+
+album(id,date,title,muscid)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+emp(id ,name)
+salesofice(num ,loc,salesoffice_num)
+property(id,add.city,state,zip,salesoffice_num)
+owner(id name)
+property_owener(property,owener,precent-owened)
+
+
+
+
+
+
+
+
+
+3
+
+patient(id,name,dob,con_id,ward_id)
+patientcon(patient id,consultant_id)
+
+ward(id,name)
+patient_nurese_drug(patient_id,nurse_id,drugcode,date,time,dosage)
+
+
+nurse(id,name,ward_id,supervice_id)
+
+drug(code,)
+drugbrand(code,brand)
+consultant(id, name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create table Employees(
+id int
+,name nvarchar(15)
+
+,Salary decimal
+
+)
+alter table Employees
+add  Department nvarchar(15);
+
+alter table Employees
+drop column Salary
+
+
+
+EXEC sp_rename 'Employees', 'DeptName', 'COLUMN';
+
+go
+ 
+ALTER TABLE Employees
+ADD CONSTRAINT idds PRIMARY KEY (id);
+
+////////////////////////////////////////////
+ALTER TABLE Employees
+ADD CONSTRAINT namee UNIQUE (Name);
+create table Customers(
+CustomerID int not null
+,FirstName varchar(50)
+,LastName varchar(50)
+,Email varchar(100)
+,Status varchar(20)
+)
+
+alter table Customers
+add primary key (CustomerID);
+
+alter table Customers
+add unique (FirstName, LastName);
+
+
+
+create table Orders(
+OrderID int not null
+,CustomerID int
+,OrderDate datetime
+,TotalAmount decimal(10,2)
+)
+
+alter table Orders
+add primary key (OrderID);
+
+alter table Orders
+add foreign key (CustomerID) references Customers(CustomerID);
+
+alter table Orders
+add check (TotalAmount > 0);
+
+
+
+create schema Sales;
+go
+
+alter schema Sales transfer dbo.Orders;
+
+exec sp_rename 'Sales.Orders', 'SalesOrders';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2
+
+
+
